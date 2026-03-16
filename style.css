@@ -1,9 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   background: #e6f4ea;
   color: #212529;
 }
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -14,16 +21,18 @@ nav {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   border-radius: 0 0 15px 15px;
 }
+
 .logo {
   font-family: "Poppins", sans-serif;
   font-size: 32px;
   font-weight: 700;
   background: linear-gradient(90deg, #a8e6a3, #28a745);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 1.5px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
+
 .menu a {
   margin-left: 30px;
   text-decoration: none;
@@ -33,10 +42,12 @@ nav {
     color 0.3s,
     transform 0.3s;
 }
+
 .menu a:hover {
   color: #d4f0d4;
   transform: scale(1.05);
 }
+
 .hero {
   display: flex;
   align-items: center;
@@ -47,22 +58,27 @@ nav {
   flex-wrap: wrap;
   border-radius: 15px;
 }
+
 .hero-text {
   max-width: 500px;
 }
+
 .hero-text h1 {
   font-size: 48px;
   margin-bottom: 20px;
   color: #1e7e34;
 }
+
 .hero-text span {
   color: #28a745;
 }
+
 .hero-text p {
   line-height: 1.6;
   margin-bottom: 25px;
   color: #333;
 }
+
 .hero-btn {
   background: #28a745;
   color: white;
@@ -75,10 +91,12 @@ nav {
     background 0.3s,
     transform 0.3s;
 }
+
 .hero-btn:hover {
   background: #1e7e34;
   transform: scale(1.05);
 }
+
 .hero-img {
   position: relative;
   width: 420px;
@@ -87,6 +105,7 @@ nav {
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
+
 .hero-img img {
   width: 100%;
   height: 100%;
@@ -97,18 +116,22 @@ nav {
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
+
 .hero-img img.active {
   opacity: 1;
 }
+
 main {
   max-width: 900px;
   margin: 40px auto;
   padding: 0 20px;
 }
+
 h2 {
   color: #28a745;
   margin-bottom: 25px;
 }
+
 .bencana-item {
   display: flex;
   justify-content: space-between;
@@ -123,13 +146,16 @@ h2 {
     transform 0.3s,
     box-shadow 0.3s;
 }
+
 .bencana-item:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
+
 .bencana-info strong {
   color: #1e7e34;
 }
+
 .info-btn {
   background: #28a745;
   border: none;
@@ -142,10 +168,12 @@ h2 {
     background 0.3s,
     transform 0.3s;
 }
+
 .info-btn:hover {
   background: #1e7e34;
   transform: scale(1.05);
 }
+
 #detailBencana {
   margin-top: 30px;
   background: white;
@@ -154,9 +182,11 @@ h2 {
   padding: 25px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
+
 #detailBencana h3 {
   color: #28a745;
 }
+
 .donasi-btn {
   background: #28a745;
   border: none;
@@ -170,18 +200,33 @@ h2 {
     background 0.3s,
     transform 0.3s;
 }
+
 .donasi-btn:hover {
   background: #1e7e34;
   transform: scale(1.05);
 }
+
+#kontak {
+  padding: 30px;
+}
+
 #kontak input,
 #kontak textarea {
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 6px;
+  padding: 12px 14px;
+  border-radius: 8px;
   border: 1.5px solid #ccc;
   font-size: 1rem;
+  margin-bottom: 10px;
+  outline: none;
+  transition: border 0.3s;
 }
+
+#kontak input:focus,
+#kontak textarea:focus {
+  border-color: #28a745;
+}
+
 #kontak button {
   margin-top: 20px;
   background: #28a745;
@@ -195,6 +240,7 @@ h2 {
     background 0.3s,
     transform 0.3s;
 }
+
 #kontak button:hover {
   background: #1e7e34;
   transform: scale(1.05);
