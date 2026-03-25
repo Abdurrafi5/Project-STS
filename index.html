@@ -1,69 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>BantuBencana</title>
-      <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BantuBencana - Peduli Sesama</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
     <nav>
-      <div class="logo">BantuBencana</div>
-      <div class="menu">
-        <a href="#">Home</a>
-        <a href="#">Data Bencana</a>
-        <a href="#">Donasi</a>
-        <a href="#">Kontak</a>
-      </div>
+        <div class="logo">BantuBencana</div>
+        <div class="menu">
+            <a href="#home" class="active">Home</a>
+            <a href="#bencana">Data Bencana</a>
+            <a href="#contributor">Contributor</a>
+            <a href="#kontak">Kontak</a>
+            <div class="auth-links">
+                <a href="#" class="login-btn" onclick="openModal('login')">Login</a>
+                <a href="#" class="register-btn" onclick="openModal('register')">Register</a>
+            </div>
+        </div>
     </nav>
 
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Peduli Bencana <br><span>Bantu Sesama</span></h1>
-        <p>Dapatkan informasi bencana terbaru dan bantu korban dengan 
-          donasi atau bantuan logistik secara cepat dan transparan.
-        </p>
-        <button class="hero-btn" onclick="scrollToBencana()">Lihat Data Bencana</button>
-      </div>
-      <div class="hero-img" id="heroSlider">
-        <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5" class="active" alt="Foto Bencana">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Foto Bencana">
-        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156" alt="Foto Bencana">
-      </div>
+
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1>Peduli Bencana <br><span>Bantu Sesama</span></h1>
+            <p>Dapatkan informasi bencana terbaru dan bantu korban dengan donasi atau bantuan logistik secara cepat dan transparan.</p>
+            <button class="hero-btn" onclick="scrollToSection('bencana')">Lihat Data Bencana</button>
+        </div>
+        <div class="hero-img" id="heroSlider">
+            <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?w=500" class="active" alt="Bencana 1">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500" alt="Bencana 2">
+            <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?w=500" alt="Bencana 3">
+        </div>
     </section>
 
-    <main>
-      <h2>Daftar Bencana</h2>
-      <div id="bencanaList"></div>
-    
-      <div id="detailBencana" style="display:none;">
-        <h3>Detail Bencana</h3>
-        <p><strong>Tempat:</strong> <span id="tempat"></span></p>
-        <p><strong>Jenis Bencana:</strong> <span id="jenis"></span></p>
-        <p><strong>Tanggal:</strong> <span id="tanggal"></span></p>
-        <p><strong>Deskripsi:</strong> <span id="deskripsi"></span></p>
-        <br>
-        <button class="donasi-btn" onclick="donasiBarang()">Donasi Barang</button>
-        <button class="donasi-btn" onclick="donasiUang()">Donasi Uang</button>
-      </div>
-    </main>
+    <section id="bencana" class="section">
+        <div class="section-header">
+            <h2>Data Bencana <span>Terkini</span></h2>
+            <p>Informasi bencana alam terbaru di Indonesia</p>
+        </div>
+        
+        <div class="bencana-grid" id="bencanaList">
+        </div>
 
-    <section id="kontak" style="max-width:900px; margin:40px auto 60px; padding:20px; background:white; border:2px solid #212529; border-radius:12px; box-shadow:0 3px 12px rgba(0,0,0,0.15);">
-      <h2>Kontak Kami</h2>
-      <form id="contactForm" style="display:flex; flex-direction:column;">
-        <label for="nama" style="margin:12px 0 6px;">Nama:</label>
-        <input type="text" id="nama" required placeholder="Masukkan nama Anda" />
-
-        <label for="email" style="margin:12px 0 6px;">Email:</label>
-        <input type="email" id="email" required placeholder="Masukkan email Anda" />
-
-        <label for="pesan" style="margin:12px 0 6px;">Pesan:</label>
-        <textarea id="pesan" rows="4" required placeholder="Tulis pesan Anda"></textarea>
-
-        <button type="submit">Kirim Pesan</button>
-      </form>
+        <div class="social-share">
+            <h3>Bagikan Website Ini:</h3>
+            <div class="share-buttons">
+                <a href="#" class="share-btn whatsapp" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" class="share-btn facebook" onclick="shareFacebook()"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#" class="share-btn twitter" onclick="shareTwitter()"><i class="fab fa-twitter"></i> Twitter</a>
+            </div>
+        </div>
     </section>
+
+    <section id="contributor" class="section">
+        <div class="section-header">
+            <h2>Para <span>Contributor</span></h2>
+            <p>Terima kasih kepada para pahlawan yang telah berkontribusi</p>
+        </div>
+
+        <div class="contributor-grid">
+            <div class="contributor-card">
+                <div class="contributor-icon">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3>Abdurrafi</h3>
+                <p>Founder & Project Lead</p>
+                <p class="contributor-desc">Menginisiasi platform BantuBencana</p>
+            </div>
+            
+            <div class="contributor-card">
+                <div class="contributor-icon">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3>Wikrama</h3>
+                <p>Lead Developer</p>
+                <p class="contributor-desc">Mengembangkan seluruh fitur website</p>
+            </div>
+            
+            <div class="contributor-card">
+                <div class="contributor-icon">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3>Tim Data</h3>
+                <p>Data Contributor</p>
+                <p class="contributor-desc">Mengumpulkan dan memverifikasi data bencana</p>
+            </div>
+            
+            <div class="contributor-card">
+                <div class="contributor-icon">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3>Tim Donasi</h3>
+                <p>Fundraising Team</p>
+                <p class="contributor-desc">Mengelola donasi dan bantuan</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="section">
+        <div class="section-header">
+            <h2>Kontak <span>Kami</span></h2>
+            <p>Ada pertanyaan? Silakan hubungi kami</p>
+        </div>
+
+        <div class="kontak-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="nama">Nama:</label>
+                    <input type="text" id="nama" required placeholder="Masukkan nama Anda">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required placeholder="Masukkan email Anda">
+                </div>
+
+                <div class="form-group">
+                    <label for="pesan">Pesan:</label>
+                    <textarea id="pesan" rows="4" required placeholder="Tulis pesan Anda"></textarea>
+                </div>
+
+                <button type="submit">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="loginForm">
+                <h2>Login ke <span>BantuBencana</span></h2>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required placeholder="Masukkan email">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required placeholder="Masukkan password">
+                    </div>
+                    <button type="submit" class="auth-btn">Login</button>
+                </form>
+                <p class="auth-link">Belum punya akun? <a href="#" onclick="switchModal('register')">Daftar</a></p>
+            </div>
+
+            <div id="registerForm" style="display:none;">
+                <h2>Daftar <span>BantuBencana</span></h2>
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="regNama">Nama Lengkap</label>
+                        <input type="text" id="regNama" required placeholder="Masukkan nama">
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" required placeholder="Masukkan email">
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Password</label>
+                        <input type="password" id="regPassword" required placeholder="Buat password">
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirm">Konfirmasi Password</label>
+                        <input type="password" id="regConfirm" required placeholder="Ulangi password">
+                    </div>
+                    <button type="submit" class="auth-btn">Daftar</button>
+                </form>
+                <p class="auth-link">Sudah punya akun? <a href="#" onclick="switchModal('login')">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDetailModal()">&times;</span>
+            <h3 id="modalTempat"></h3>
+            <p><strong>Jenis Bencana:</strong> <span id="modalJenis"></span></p>
+            <p><strong>Tanggal:</strong> <span id="modalTanggal"></span></p>
+            <p><strong>Deskripsi:</strong> <span id="modalDeskripsi"></span></p>
+            <div class="modal-actions">
+                <button class="donasi-btn" onclick="donasiBarang()">Donasi Barang</button>
+                <button class="donasi-btn" onclick="donasiUang()">Donasi Uang</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 BantuBencana. All rights reserved.</p>
+            <p class="made-by">Made with <i class="fas fa-heart" style="color: #ff4444;"></i> by <strong>Wikrama</strong> for Abdurrafi</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
-  </body>
+</body>
 </html>

@@ -89,3 +89,103 @@ setInterval(sliderNext, 4000);
 window.onload = () => {
   tampilkanBencana();
 };
+
+
+
+
+function shareWhatsApp() {
+    const text = encodeURIComponent('Cek website BantuBencana - Informasi bencana terkini dan platform donasi!');
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+}
+
+function shareFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+}
+
+function shareTwitter() {
+    const text = encodeURIComponent('BantuBencana - Peduli Sesama');
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+}
+
+
+function tampilkanSemuaBencana() {
+    const grid = document.getElementById('bencanaGrid');
+    if (!grid) return;
+    
+    grid.innerHTML = '';
+    bencana.forEach(item => {
+        const card = document.createElement('div');
+        card.classList.add('bencana-card');
+        card.onclick = () => bukaModal(item);
+        card.innerHTML = `
+            <h3>${item.tempat}</h3>
+            <p><strong>Jenis:</strong> ${item.jenis}</p>
+            <p><strong>Tanggal:</strong> ${item.tanggal}</p>
+            <div class="card-footer">
+                <span>Klik untuk detail</span>
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function bukaModal(item) {
+    const modal = document.getElementById('bencanaModal');
+    document.getElementById('modalTempat').innerText = item.tempat;
+    document.getElementById('modalJenis').innerText = item.jenis;
+    document.getElementById('modalTanggal').innerText = item.tanggal;
+    document.getElementById('modalDeskripsi').innerText = item.deskripsi;
+    modal.style.display = 'block';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('bencanaModal');
+    const closeBtn = document.querySelector('.close');
+    
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+    
+
+    tampilkanSemuaBencana();
+});
+
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.menu a');
+    
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
