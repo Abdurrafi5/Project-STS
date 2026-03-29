@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - BantuBencana</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">BantuBencana</div>
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="index.html#bencana">Data Bencana</a>
+            <a href="index.html#contributor">Contributor</a>
+            <a href="index.html#kontak">Kontak</a>
+            <div class="auth-links">
+                <a href="login.html" class="login-btn active">Login</a>
+                <a href="register.html" class="register-btn">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2>Login ke <span>BantuBencana</span></h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Masukkan email Anda">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Masukkan password">
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+            </form>
+            <p class="auth-link">Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 BantuBencana. All rights reserved.</p>
+            <p class="made-by">Made with <i class="fas fa-heart" style="color: #ff4444;"></i> by <strong>Fadlan</strong> for Abdurrafi</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = 'admin.html';
+        });
+    </script>
+</body>
+</html>

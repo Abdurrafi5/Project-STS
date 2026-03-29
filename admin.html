@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - BantuBencana</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">BantuBencana</div>
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="index.html#bencana">Data Bencana</a>
+            <a href="index.html#contributor">Contributor</a>
+            <a href="index.html#kontak">Kontak</a>
+            <div class="auth-links">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="register.html" class="register-btn">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <div class="admin-card">
+            <div class="admin-header">
+                <i class="fas fa-user-shield"></i>
+                <h1>Admin <span>Panel</span></h1>
+                <p>Selamat datang di halaman admin BantuBencana</p>
+            </div>
+            
+            <div class="admin-menu">
+                <div class="admin-box">
+                    <i class="fas fa-database"></i>
+                    <h3>Kelola Data Bencana</h3>
+                    <p>Tambah, edit, atau hapus data bencana</p>
+                    <button class="admin-btn" onclick="alert('Fitur sedang dalam pengembangan oleh Abdurrafi')">Kelola</button>
+                </div>
+                
+                <div class="admin-box">
+                    <i class="fas fa-users"></i>
+                    <h3>Kelola Donasi</h3>
+                    <p>Lihat laporan donasi masuk</p>
+                    <button class="admin-btn" onclick="alert('Fitur sedang dalam pengembangan oleh Abdurrafi')">Lihat</button>
+                </div>
+                
+                <div class="admin-box">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Pesan Masuk</h3>
+                    <p>Baca pesan dari pengunjung</p>
+                    <button class="admin-btn" onclick="alert('Fitur sedang dalam pengembangan oleh Abdurrafi')">Baca</button>
+                </div>
+                
+                <div class="admin-box">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Statistik</h3>
+                    <p>Lihat statistik pengunjung</p>
+                    <button class="admin-btn" onclick="alert('Fitur sedang dalam pengembangan oleh Abdurrafi')">Lihat</button>
+                </div>
+            </div>
+            
+            <div class="admin-footer">
+                <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 BantuBencana. All rights reserved.</p>
+            <p class="made-by">Made with <i class="fas fa-heart" style="color: #ff4444;"></i> by <strong>Wikrama</strong> for Abdurrafi</p>
+        </div>
+    </footer>
+
+    <style>
+        /* CSS tambahan untuk admin page */
+        .admin-container {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            background: #f0f7f0;
+        }
+        
+        .admin-card {
+            background: white;
+            border-radius: 30px;
+            border: 2px solid #212529;
+            padding: 40px;
+            max-width: 1200px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .admin-header i {
+            font-size: 60px;
+            color: #28a745;
+        }
+        
+        .admin-header h1 {
+            font-size: 36px;
+            color: #1e7e34;
+            margin: 10px 0;
+        }
+        
+        .admin-header h1 span {
+            color: #28a745;
+        }
+        
+        .admin-header p {
+            color: #555;
+            font-size: 18px;
+        }
+        
+        .admin-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .admin-box {
+            background: #f9f9f9;
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+        
+        .admin-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #28a745;
+        }
+        
+        .admin-box i {
+            font-size: 48px;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+        
+        .admin-box h3 {
+            color: #1e7e34;
+            margin-bottom: 10px;
+        }
+        
+        .admin-box p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .admin-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .admin-btn:hover {
+            background: #1e7e34;
+            transform: scale(1.05);
+        }
+        
+        .admin-footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: #28a745;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .admin-card {
+                padding: 25px;
+            }
+            
+            .admin-menu {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>
