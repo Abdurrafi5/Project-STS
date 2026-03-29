@@ -89,12 +89,12 @@ nav {
 	transition: all 0.3s;
 }
 
-.menu a:hover,
-.menu a.active {
-	color: var(--primary);
-	font-weight: 700;
-	border-bottom: 3px solid var(--primary);
-	padding-bottom: 2px;
+.menu a:not(.login-btn):not(.register-btn):hover,
+.menu a:not(.login-btn):not(.register-btn).active {
+    color: var(--primary);
+    font-weight: 700;
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 2px;
 }
 
 .auth-links {
@@ -126,40 +126,46 @@ nav {
 
 .login-btn,
 .register-btn {
-	padding: 12px 28px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 105px;
+	height: 50px;
 	border-radius: 30px;
-	transition: all 0.3s;
-	font-weight: 700;
 	font-size: 14px;
-	border: none;
-	cursor: pointer;
+	font-weight: 700;
 	text-decoration: none;
-	display: inline-block;
+	cursor: pointer;
+	box-sizing: border-box;
+	border: 2px solid var(--primary);
+	transition:
+		transform 0.2s ease,
+		background 0.3s ease,
+		color 0.3s ease;
+	transform-origin: center;
 }
 
 .login-btn {
 	background: transparent;
-	border: 2px solid var(--primary);
-	color: var(--primary);
+	color: var(--primary) !important;
 }
 
 .login-btn:hover {
 	background: var(--primary);
-	color: white;
-	transform: translateY(-2px);
+	color: white !important;
+	transform: scale(0.95);
 }
 
 .register-btn {
 	background: var(--primary);
 	color: white !important;
-	box-shadow: 0 4px 12px rgba(30, 126, 52, 0.25);
 }
 
 .register-btn:hover {
-	background: var(--primary-dark);
-	color: white !important;
-	transform: translateY(-2px);
-	box-shadow: 0 8px 20px rgba(30, 126, 52, 0.35);
+	background: white;
+	color: var(--primary) !important;
+	transform: scale(0.95);
+	box-shadow: none;
 }
 
 /* Hero Section */
@@ -714,167 +720,173 @@ footer {
 
 /* Admin Page Styles */
 .admin-container {
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 20px;
-    background: var(--bg);
+	min-height: 70vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 60px 20px;
+	background: var(--bg);
 }
 
 .admin-card {
-    background: var(--surface);
-    border-radius: 30px;
-    border: 2px solid var(--border);
-    padding: 40px;
-    max-width: 1200px;
-    width: 100%;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+	background: var(--surface);
+	border-radius: 30px;
+	border: 2px solid var(--border);
+	padding: 40px;
+	max-width: 1200px;
+	width: 100%;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .admin-header {
-    text-align: center;
-    margin-bottom: 40px;
+	text-align: center;
+	margin-bottom: 40px;
 }
 
 .admin-header i {
-    font-size: 48px;
-    color: var(--primary);
-    margin-bottom: 20px;
+	font-size: 48px;
+	color: var(--primary);
+	margin-bottom: 20px;
 }
 
 .admin-header h1 {
-    font-size: 36px;
-    color: var(--primary);
-    margin-bottom: 10px;
+	font-size: 36px;
+	color: var(--primary);
+	margin-bottom: 10px;
 }
 
 .admin-header h1 span {
-    color: var(--primary-dark);
+	color: var(--primary-dark);
 }
 
 .admin-header p {
-    color: var(--text-body);
-    font-size: 16px;
+	color: var(--text-body);
+	font-size: 16px;
 }
 
 .admin-menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 30px;
 }
 
 .admin-box {
-    background: var(--surface);
-    border: 2px solid var(--border);
-    border-radius: 20px;
-    padding: 30px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+	background: var(--surface);
+	border: 2px solid var(--border);
+	border-radius: 20px;
+	padding: 30px;
+	text-align: center;
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
 }
 
 .admin-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+	transform: translateY(-5px);
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .admin-box i {
-    font-size: 40px;
-    color: var(--primary);
-    margin-bottom: 20px;
+	font-size: 40px;
+	color: var(--primary);
+	margin-bottom: 20px;
 }
 
 .admin-box h3 {
-    color: var(--primary);
-    margin-bottom: 10px;
-    font-size: 20px;
+	color: var(--primary);
+	margin-bottom: 10px;
+	font-size: 20px;
 }
 
 .admin-box p {
-    color: var(--text-body);
-    margin-bottom: 20px;
-    font-size: 14px;
+	color: var(--text-body);
+	margin-bottom: 20px;
+	font-size: 14px;
 }
 
 .admin-btn {
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 12px 30px;
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+	background: var(--primary);
+	color: white;
+	border: none;
+	border-radius: 25px;
+	padding: 12px 30px;
+	font-weight: 700;
+	font-size: 14px;
+	cursor: pointer;
+	transition:
+		background 0.3s ease,
+		transform 0.3s ease;
 }
 
 .admin-btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
+	background: var(--primary-dark);
+	transform: translateY(-2px);
 }
 
 /* Auth Pages Styles */
 .auth-container {
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 20px;
-    background: var(--bg);
+	min-height: 70vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 60px 20px;
+	background: var(--bg);
 }
 
 .auth-card {
-    background: var(--surface);
-    border-radius: 30px;
-    border: 2px solid var(--border);
-    padding: 40px;
-    max-width: 500px;
-    width: 100%;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+	background: var(--surface);
+	border-radius: 30px;
+	border: 2px solid var(--border);
+	padding: 40px;
+	max-width: 500px;
+	width: 100%;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .auth-card h2 {
-    text-align: center;
-    font-size: 32px;
-    color: var(--primary);
-    margin-bottom: 30px;
+	text-align: center;
+	font-size: 32px;
+	color: var(--primary);
+	margin-bottom: 30px;
 }
 
 .auth-card h2 span {
-    color: var(--primary-dark);
+	color: var(--primary-dark);
 }
 
 .auth-btn {
-    width: 100%;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 15px;
-    font-weight: 700;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
-    margin-top: 20px;
+	width: 100%;
+	background: var(--primary);
+	color: white;
+	border: none;
+	border-radius: 25px;
+	padding: 15px;
+	font-weight: 700;
+	font-size: 16px;
+	cursor: pointer;
+	transition:
+		background 0.3s ease,
+		transform 0.3s ease;
+	margin-top: 20px;
 }
 
 .auth-btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
+	background: var(--primary-dark);
+	transform: translateY(-2px);
 }
 
 .auth-link {
-    text-align: center;
-    margin-top: 20px;
-    color: var(--text-body);
+	text-align: center;
+	margin-top: 20px;
+	color: var(--text-body);
 }
 
 .auth-link a {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
+	color: var(--primary);
+	text-decoration: none;
+	font-weight: 600;
 }
 
 .auth-link a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
