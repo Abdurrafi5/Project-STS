@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - BantuBencana</title>
+    <link rel="icon" href="assets/profile.png" type="image/png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <nav>
-        <div class="logo">BantuBencana</div>
+        <div class="logo">
+            <img src="assets/profile.png" class="logo-img" alt="Profile">
+            <span>BantuBencana</span>
+        </div>
         <div class="menu">
             <a href="index.html">Home</a>
             <a href="index.html#bencana">Data Bencana</a>
@@ -17,7 +21,10 @@
             <a href="index.html#kontak">Kontak</a>
             <div class="auth-links">
                 <a href="login.html" class="login-btn">Login</a>
-                <a href="register.html" class="register-btn active">Register</a>
+                <a href="register.html" class="register-btn">Register</a>
+            </div>
+            <div class="theme-toggle">
+                <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
             </div>
         </div>
     </nav>
@@ -50,8 +57,7 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2026 BantuBencana. All rights reserved.</p>
-            <p class="made-by">Made with <i class="fas fa-heart" style="color: #ff4444;"></i> by <strong>Fadlan</strong> for Abdurrafi</p>
+            <p>&copy; 2026 BantuBencana.</p>
         </div>
     </footer>
 
@@ -68,6 +74,29 @@
             
             alert('Pendaftaran berhasil! Silakan login.');
             window.location.href = 'login.html';
+        });
+
+        // Dark mode support
+        const themeToggle = document.getElementById("themeToggle");
+
+        function applyTheme(theme) {
+            const isDark = theme === "dark";
+            document.body.classList.toggle("dark-mode", isDark);
+            themeToggle.textContent = isDark ? "☀️" : "🌙";
+            localStorage.setItem("theme", theme);
+        }
+
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else {
+            const preferDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            applyTheme(preferDark ? "dark" : "light");
+        }
+
+        themeToggle.addEventListener("click", () => {
+            const activeTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+            applyTheme(activeTheme === "dark" ? "light" : "dark");
         });
     </script>
 </body>
