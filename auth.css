@@ -1,0 +1,67 @@
+/* Auth Pages Styles */
+.auth-container {
+	min-height: 70vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 60px 20px;
+	background: var(--bg);
+}
+
+.auth-card {
+	background: var(--surface);
+	border-radius: 30px;
+	border: 2px solid var(--border);
+	padding: 40px;
+	max-width: 500px;
+	width: 100%;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.auth-card h2 {
+	text-align: center;
+	font-size: 32px;
+	color: var(--primary);
+	margin-bottom: 30px;
+}
+
+.auth-card h2 span {
+	color: var(--primary-dark);
+}
+
+.auth-btn {
+	width: 100%;
+	background: var(--primary);
+	color: white;
+	border: none;
+	border-radius: 25px;
+	padding: 15px;
+	font-weight: 700;
+	font-size: 16px;
+	cursor: pointer;
+	transition:
+		background 0.3s ease,
+		transform 0.3s ease;
+	margin-top: 20px;
+}
+
+.auth-btn:hover {
+	background: var(--primary-dark);
+	transform: translateY(-2px);
+}
+
+.auth-link {
+	text-align: center;
+	margin-top: 20px;
+	color: var(--text-body);
+}
+
+.auth-link a {
+	color: var(--primary);
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.auth-link a:hover {
+	text-decoration: underline;
+}
