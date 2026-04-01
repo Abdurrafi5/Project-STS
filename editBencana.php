@@ -2,7 +2,6 @@
 session_start();
 include 'config.php';
 
-// Proteksi Admin
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.php");
     exit();
@@ -12,7 +11,6 @@ $id = mysqli_real_escape_string($conn, $_GET['id']);
 $query = mysqli_query($conn, "SELECT * FROM bencana WHERE id = '$id'");
 $data = mysqli_fetch_assoc($query);
 
-// Jika ID tidak ditemukan
 if (!$data) {
     header("Location: kelolaBencana.php");
     exit();
@@ -28,7 +26,6 @@ if (isset($_POST['update'])) {
         $gambar = $_FILES['gambar']['name'];
         $tmp = $_FILES['gambar']['tmp_name'];
         
-        // Hapus gambar lama jika ada (opsional tapi bagus untuk kebersihan storage)
         if(file_exists("assets/" . $data['gambar'])) {
             unlink("assets/" . $data['gambar']);
         }

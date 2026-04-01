@@ -76,11 +76,11 @@ if (isset($_POST['tambah'])) {
         <form action="" method="POST" enctype="multipart/form-data" class="form-grid">
             <div class="form-group">
                 <label>Judul Bencana</label>
-                <input type="text" name="judul" placeholder="Misal: Banjir Bandang" required>
+                <input type="text" name="judul" required>
             </div>
             <div class="form-group">
                 <label>Lokasi</label>
-                <input type="text" name="lokasi" placeholder="Misal: Karawang, Jawa Barat" required>
+                <input type="text" name="lokasi" required>
             </div>
             <div class="form-group">
                 <label>Tanggal Kejadian</label>

@@ -87,11 +87,10 @@ session_start();
                                     <p class="deskripsi">
                                         <?php 
                                         $isi_deskripsi = $row['deskripsi'];
-                                        $max_kata = 100; // Batas 100 kata
+                                        $max_kata = 100;
                                         $array_kata = explode(" ", $isi_deskripsi);
                                                                 
                                         if (count($array_kata) > $max_kata) {
-                                            // Ambil 100 kata pertama
                                             $potong_kata = array_slice($array_kata, 0, $max_kata);
                                             echo htmlspecialchars(implode(" ", $potong_kata)) . "...";
                                         } else {
@@ -130,19 +129,19 @@ session_start();
                     <div class="contributor-icon"><i class="fas fa-user-circle"></i></div>
                     <h3>Abdurrafi Firlan Putra</h3>
                     <p>Founder & Project Lead</p>
-                    <p class="contributor-desc">Menginisiasi platform BantuBencana</p>
+                    <p class="contributor-desc">BackEnd platform BantuBencana</p>
                 </div>
                 <div class="contributor-card">
                     <div class="contributor-icon"><i class="fas fa-user-circle"></i></div>
                     <h3>Muhammad Fadlan</h3>
-                    <p>Founder & Project Lead</p>
-                    <p class="contributor-desc">Menginisiasi platform BantuBencana</p>
+                    <p>Founder & Administrator</p>
+                    <p class="contributor-desc">FrontEnd platform BantuBencana</p>
                 </div>
                 <div class="contributor-card">
                     <div class="contributor-icon"><i class="fas fa-user-circle"></i></div>
                     <h3>Afifah Khoirunnisa</h3>
-                    <p>Founder & Project Lead</p>
-                    <p class="contributor-desc">Menginisiasi platform BantuBencana</p>
+                    <p>Founder & Editor</p>
+                    <p class="contributor-desc">UI/UX platform BantuBencana</p>
                 </div>
             </div>
         </section>
