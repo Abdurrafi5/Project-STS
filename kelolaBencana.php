@@ -10,6 +10,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 if (isset($_POST['tambah'])) {
     $judul = mysqli_real_escape_string($conn, $_POST['judul']);
     $lokasi = mysqli_real_escape_string($conn, $_POST['lokasi']);
+    $target_donasi = mysqli_real_escape_string($conn, $_POST['target_donasi']);
+    $deskripsi_singkat = mysqli_real_escape_string($conn, $_POST['deskripsi_singkat']);
     $deskripsi = mysqli_real_escape_string($conn, $_POST['deskripsi']);
     $tanggal = $_POST['tanggal'];
     
@@ -20,8 +22,14 @@ if (isset($_POST['tambah'])) {
     $ekstensi = strtolower(end($x));
 
     if (move_uploaded_file($tmp, "assets/" . $gambar)) {
-        mysqli_query($conn, "INSERT INTO bencana (judul, lokasi, deskripsi, tanggal, gambar) VALUES ('$judul', '$lokasi', '$deskripsi', '$tanggal', '$gambar')");
-        echo "<script>alert('Data Berhasil Ditambah!'); window.location='kelolaBencana.php';</script>";
+        $query = "INSERT INTO bencana (judul, lokasi, deskripsi, deskripsi_singkat, target_donasi, tanggal, gambar) 
+                VALUES ('$judul', '$lokasi', '$deskripsi', '$deskripsi_singkat', '$target_donasi', '$tanggal', '$gambar')";
+        
+        if(mysqli_query($conn, $query)) {
+            echo "<script>alert('Data Berhasil Ditambah!'); window.location='kelolaBencana.php';</script>";
+        } else {
+            echo "<script>alert('Gagal menyimpan ke database!');</script>";
+        }
     }
 }
 ?>
@@ -91,8 +99,16 @@ if (isset($_POST['tambah'])) {
                 <input type="file" name="gambar" accept="image/*" required>
             </div>
             <div class="form-group full-width">
-                <label>Deskripsi Singkat (Maks 500 kata)</label>
-                <textarea name="deskripsi" rows="5" oninput="checkWordCount(this)" placeholder="Ceritakan detail kejadian..." required></textarea>
+                <label>Target Donasi</label>
+                <input type="number" name="target_donasi" placeholder="Contoh: 1000000000" required>
+            </div>
+            <div class="form-group full-width">
+                <label>Deskripsi Singkat ( Beranda - 100 kata)</label>
+                <textarea name="deskripsi_singkat" rows="2" required></textarea>
+            </div>
+            <div class="form-group full-width">
+                <label>Info Detail Bencana ( Detail )</label>
+                <textarea name="deskripsi" rows="5" required></textarea>
             </div>
             <button type="submit" name="tambah" class="donation-btn full-width">Posting Sekarang</button>
         </form>

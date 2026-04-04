@@ -78,30 +78,30 @@ session_start();
                             while($row = mysqli_fetch_assoc($query)):
                         ?>
                         <div class="bencana-card">
-                                <img src="assets/<?php echo $row['gambar']; ?>" alt="Bencana">
-                                <div class="bencana-info">
-                                    <h3><?php echo htmlspecialchars($row['judul']); ?></h3>
-                                    <p class="lokasi">
-                                        <i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($row['lokasi']); ?>
-                                    </p>
-                                    <p class="deskripsi">
-                                        <?php 
-                                        $isi_deskripsi = $row['deskripsi'];
-                                        $max_kata = 100;
-                                        $array_kata = explode(" ", $isi_deskripsi);
-                                                                
-                                        if (count($array_kata) > $max_kata) {
-                                            $potong_kata = array_slice($array_kata, 0, $max_kata);
-                                            echo htmlspecialchars(implode(" ", $potong_kata)) . "...";
-                                        } else {
-                                            echo htmlspecialchars($isi_deskripsi);
-                                        }
-                                        ?>
-                                    </p>
-                                    <a href="detail_bencana.php?id=<?php echo $row['id']; ?>" class="donation-btn">
+                            <img src="assets/<?php echo $row['gambar']; ?>" alt="Bencana">
+                            <div class="bencana-info">
+                                <h3><?php echo htmlspecialchars($row['judul']); ?></h3>
+                                                    
+                                <div class="lokasi">
+                                    <i class="fas fa-map-marker-alt"></i> 
+                                    <?php echo htmlspecialchars($row['lokasi']); ?>
+                                </div>
+                                                    
+                                <p class="deskripsi">
+                                    <?php echo htmlspecialchars($row['deskripsi_singkat']); ?>
+                                </p>
+                                                    
+                                <?php if(isset($_SESSION['user_id'])): ?>
+                                    <a href="detailBencana.php?id=<?php echo $row['id']; ?>" class="donation-btn">
                                         Donasi Sekarang
                                     </a>
-                                </div>
+                                <?php else: ?>
+                                    <a href="login.php" class="donation-btn" onclick="alert('Silakan login terlebih dahulu untuk berdonasi!')">
+                                        Login untuk Donasi
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                         </div>
                         <?php 
                             endwhile; 

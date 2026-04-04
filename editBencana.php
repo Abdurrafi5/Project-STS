@@ -20,6 +20,8 @@ if (isset($_POST['update'])) {
     $judul = mysqli_real_escape_string($conn, $_POST['judul']);
     $lokasi = mysqli_real_escape_string($conn, $_POST['lokasi']);
     $deskripsi = mysqli_real_escape_string($conn, $_POST['deskripsi']);
+    $deskripsi_singkat = mysqli_real_escape_string($conn, $_POST['deskripsi_singkat']);
+    $target_donasi = mysqli_real_escape_string($conn, $_POST['target_donasi']);
     $tanggal = $_POST['tanggal'];
 
     if ($_FILES['gambar']['name'] != "") {
@@ -31,13 +33,31 @@ if (isset($_POST['update'])) {
         }
         
         move_uploaded_file($tmp, "assets/" . $gambar);
-        $sql = "UPDATE bencana SET judul='$judul', lokasi='$lokasi', deskripsi='$deskripsi', tanggal='$tanggal', gambar='$gambar' WHERE id='$id'";
+        $sql = "UPDATE bencana SET 
+                judul='$judul', 
+                lokasi='$lokasi', 
+                deskripsi='$deskripsi', 
+                deskripsi_singkat='$deskripsi_singkat', 
+                target_donasi=$target_donasi, 
+                tanggal='$tanggal', 
+                gambar='$gambar' 
+                WHERE id='$id'";
     } else {
-        $sql = "UPDATE bencana SET judul='$judul', lokasi='$lokasi', deskripsi='$deskripsi', tanggal='$tanggal' WHERE id='$id'";
+        $sql = "UPDATE bencana SET 
+                judul='$judul', 
+                lokasi='$lokasi', 
+                deskripsi='$deskripsi', 
+                deskripsi_singkat='$deskripsi_singkat', 
+                target_donasi=$target_donasi, 
+                tanggal='$tanggal' 
+                WHERE id='$id'";
     }
 
-    mysqli_query($conn, $sql);
-    echo "<script>alert('Data Berhasil Diperbarui!'); window.location='kelolaBencana.php';</script>";
+    if(mysqli_query($conn, $sql)) {
+        echo "<script>alert('Data Berhasil Diperbarui!'); window.location='kelolaBencana.php';</script>";
+    } else {
+        echo "<script>alert('Gagal memperbarui data: " . mysqli_error($conn) . "');</script>";
+    }
 }
 ?>
 
@@ -53,41 +73,18 @@ if (isset($_POST['update'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .admin-main { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-        .dashboard-card { 
-            background: var(--surface); 
-            border-radius: 20px; 
-            border: 2px solid var(--border); 
-            padding: 35px; 
-            box-shadow: 0 8px 24px rgba(0,0,0,0.05); 
-        }
-        
+        .dashboard-card { background: var(--surface); border-radius: 20px; border: 2px solid var(--border); padding: 35px; box-shadow: 0 8px 24px rgba(0,0,0,0.05); }
         .form-header { margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
         .form-header h2 { color: var(--primary); display: flex; align-items: center; gap: 10px; }
-
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-body); font-size: 14px; }
-        
-        .form-control { 
-            width: 100%; padding: 14px; border: 2px solid var(--border); 
-            border-radius: 12px; background: var(--bg); color: var(--text-body); 
-            font-family: inherit; font-size: 15px; transition: 0.3s;
-        }
-        
+        .form-control { width: 100%; padding: 14px; border: 2px solid var(--border); border-radius: 12px; background: var(--bg); color: var(--text-body); font-family: inherit; font-size: 15px; transition: 0.3s; }
         .form-control:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 4px var(--soft); }
-
-        .current-img-box { 
-            display: flex; align-items: center; gap: 15px; 
-            background: var(--soft); padding: 15px; border-radius: 12px; margin-bottom: 10px; 
-        }
-
+        .current-img-box { display: flex; align-items: center; gap: 15px; background: var(--soft); padding: 15px; border-radius: 12px; margin-bottom: 10px; }
         .btn-group { display: flex; gap: 15px; margin-top: 30px; }
-        .btn-save { flex: 2; }
-        .btn-cancel { 
-            flex: 1; background: #f8f9fa; color: #6c757d; border: 2px solid #dee2e6; 
-            padding: 14px; border-radius: 12px; font-weight: 700; text-align: center; text-decoration: none; transition: 0.3s;
-        }
+        .btn-save { flex: 2; margin: 0; }
+        .btn-cancel { flex: 1; background: #f8f9fa; color: #6c757d; border: 2px solid #dee2e6; padding: 14px; border-radius: 12px; font-weight: 700; text-align: center; text-decoration: none; transition: 0.3s; line-height: 1.2; }
         .btn-cancel:hover { background: #e2e6ea; color: #343a40; }
-
         .back-link { text-decoration: none; color: var(--muted); font-size: 14px; display: inline-flex; align-items: center; gap: 5px; margin-bottom: 20px; transition: 0.3s; }
         .back-link:hover { color: var(--primary); }
     </style>
@@ -123,7 +120,17 @@ if (isset($_POST['update'])) {
             </div>
 
             <div class="form-group">
-                <label>Deskripsi (Maksimal 500 kata)</label>
+                <label>Target Donasi (Rp)</label>
+                <input type="number" name="target_donasi" class="form-control" value="<?php echo $data['target_donasi']; ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label>Deskripsi Singkat (Beranda)</label>
+                <textarea name="deskripsi_singkat" rows="2" class="form-control" required><?php echo htmlspecialchars($data['deskripsi_singkat']); ?></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Info Detail Bencana (Halaman Detail)</label>
                 <textarea name="deskripsi" rows="6" class="form-control" oninput="checkWordCount(this)" required><?php echo htmlspecialchars($data['deskripsi']); ?></textarea>
             </div>
 
