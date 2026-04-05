@@ -102,7 +102,7 @@ session_start();
                                 <?php endif; ?>
                             </div>
                         </div>
-                        </div>
+                        
                         <?php 
                             endwhile; 
                         } else { 
